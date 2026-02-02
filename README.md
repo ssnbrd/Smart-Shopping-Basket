@@ -4,6 +4,28 @@
 
 **Smart Shopping Basket** — это аппаратно-программный комплекс, состоящий из Android-приложения и физической "умной" корзины для покупок. Проект упрощает процесс покупок в магазинах, позволяя сканировать товары при добавлении в корзину и отслеживать их в реальном времени в мобильном приложении.
 
+## 📸 Скриншоты приложения
+
+### Главные экраны
+<p align="center">
+  <img src="screenshots/main_screen.jpg" width="200" alt="Главный экран">
+  <img src="screenshots/cart_screen.jpg" width="200" alt="Корзина">
+  <img src="screenshots/categories_screen.jpg" width="200" alt="Категории">
+</p>
+
+### Списки и поиск
+<p align="center">
+  <img src="screenshots/list_screen.jpg" width="200" alt="Список товаров">
+  <img src="screenshots/lists_screen.jpg" width="200" alt="Списки покупок">
+  <img src="screenshots/search_screen.jpg" width="200" alt="Поиск">
+</p>
+
+### Дополнительные функции
+<p align="center">
+  <img src="screenshots/favorites_screen.jpg" width="200" alt="Избранное">
+  <img src="screenshots/history_screen.jpg" width="200" alt="История">
+  <img src="screenshots/check_screen.jpg" width="200" alt="Чек">
+</p>
 ---
 
 ## ✨ Основные возможности (Features)
@@ -60,6 +82,7 @@
 ## ✒️ Авторы
 **ssnbrd3@gmail.com**
 **mariaburakova21@gmail.com**
+
 
 
 
