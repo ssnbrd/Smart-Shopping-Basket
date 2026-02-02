@@ -1,0 +1,33 @@
+package com.example.smartbasketapp;
+
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
+
+public class PaymentMethodsBottomSheet extends BottomSheetDialogFragment {
+
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+        return inflater.inflate(R.layout.bottom_sheet_payment, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        View addCardButton = view.findViewById(R.id.addCardButton);
+        addCardButton.setOnClickListener(v -> {
+            // TODO: Логика добавления новой карты
+            Toast.makeText(getContext(), "Добавить карту", Toast.LENGTH_SHORT).show();
+        });
+    }
+}
