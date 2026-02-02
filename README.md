@@ -26,7 +26,7 @@
   <img src="screenshots/history_screen.jpg" width="200" alt="История">
   <img src="screenshots/check_screen.jpg" width="200" alt="Чек">
 </p>
----
+
 
 ## ✨ Основные возможности (Features)
 
@@ -82,6 +82,7 @@
 ## ✒️ Авторы
 **ssnbrd3@gmail.com**
 **mariaburakova21@gmail.com**
+
 
 
 
