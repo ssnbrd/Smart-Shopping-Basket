@@ -19,7 +19,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class RegisterFragment extends Fragment {
-    private TextInputLayout emailInputLayout;
+    private TextInputLayout emailInputLayout, passwordInputLayout;
     private EditText nameEditText, surnameEditText, emailEditText, passwordEditText;
     private Button registerButton, goToLoginButton;
     public RegisterFragment() {    }
@@ -38,14 +38,18 @@ public class RegisterFragment extends Fragment {
         surnameEditText = view.findViewById(R.id.surnameEditText);
         emailEditText = view.findViewById(R.id.emailEditText);
         passwordEditText = view.findViewById(R.id.passwordEditText);
+
         registerButton = view.findViewById(R.id.registerButton);
         goToLoginButton = view.findViewById(R.id.goToLoginButton);
 
         emailInputLayout = view.findViewById(R.id.emailInputLayout);
+        passwordInputLayout = view.findViewById(R.id.passwordInputLayout);
 
         registerButton.setOnClickListener(v -> attemptRegistration());
         emailEditText.addTextChangedListener(new EmailValidationTextWatcher());
 
+        addTextWatcher(emailEditText, emailInputLayout);
+        addTextWatcher(passwordEditText, passwordInputLayout);
         goToLoginButton.setOnClickListener(v -> {
             getParentFragmentManager().popBackStack();
         });
@@ -81,8 +85,14 @@ public class RegisterFragment extends Fragment {
                     return false;
                 }
 
-                // TODO: Добавьте здесь проверки для других полей (имя, пароль и т.д.)
-                // Например, проверка длины пароля
+                String password = passwordEditText.getText().toString().trim();
+                if (password.length() < 8) {
+                    passwordInputLayout.setError("Пароль должен быть не менее 8 символов");
+                    return false;
+                } else if (!password.matches(".*\\d.*") || !password.matches(".*[a-zA-Z].*")) {
+                    passwordInputLayout.setError("Пароль должен содержать буквы и цифры");
+                    return false;
+                }
 
                 return true;
             }
@@ -101,7 +111,21 @@ public class RegisterFragment extends Fragment {
                 @Override
                 public void afterTextChanged(Editable s) {}
             }
-             private void registerUser(RegisterRequest request) {
+            private void addTextWatcher(EditText editText, TextInputLayout inputLayout) {
+            editText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (s.length() > 0) {
+                    inputLayout.setError(null);
+                }
+            }
+            @Override
+            public void afterTextChanged(Editable s) {}
+        });
+    }
+            private void registerUser(RegisterRequest request) {
             ApiClient.getApiService().registerUser(request).enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
