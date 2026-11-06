@@ -6,7 +6,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/surface_white"
+    android:background="?attr/sbSurface"
     tools:context=".CartActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:hint="@string/not_connected"
-            android:textColor="@color/icon_inactive"
+            android:textColor="?attr/sbIcon"
             android:textSize="25sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -70,7 +70,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:text="@string/start_shopping_text"
-            android:textColor="@android:color/black"
+            android:textColor="@color/on_accent"
             android:textSize="18sp"
             android:textStyle="bold" />
     </LinearLayout>
@@ -98,7 +98,7 @@
                     android:id="@+id/qrCodeEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Введите код корзины"
+                    android:hint="@string/enter_basket_code"
                     android:inputType="text" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -106,7 +106,7 @@
                 android:id="@+id/connectByCodeButton"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:textColor="@android:color/black"
+                android:textColor="@color/on_accent"
                 app:itemTextColor="@color/link_green"
                 android:text="OK"
                 android:layout_marginStart="8dp"/>
@@ -129,12 +129,12 @@
         android:id="@+id/bottomNavigation"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@color/bg_light"
+        android:background="?attr/sbBackground"
         app:itemActiveIndicatorStyle="@null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:itemIconTint="@color/icon_inactive"
+        app:itemIconTint="?attr/sbIcon"
         app:itemTextColor="@color/link_green"
         app:menu="@menu/bottom_nav_menu" />
 </androidx.constraintlayout.widget.ConstraintLayout>

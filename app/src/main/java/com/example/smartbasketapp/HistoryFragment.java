@@ -85,5 +85,4 @@ public class HistoryFragment extends Fragment implements HistoryAdapter.OnTransa
                 .addToBackStack(null)
                 .commit();
 
-        Toast.makeText(getContext(), "Нажата покупка №" + transaction.getId(), Toast.LENGTH_SHORT).show();
     }}

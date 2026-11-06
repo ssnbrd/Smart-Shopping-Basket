@@ -32,7 +32,7 @@ public class TransactionDetailsAdapter extends RecyclerView.Adapter<TransactionD
 
         holder.productName.setText(detail.getName());
 
-        String quantityDetails = String.format(Locale.getDefault(), "%d шт. x %.2f BYN",
+        String quantityDetails = holder.itemView.getContext().getString(R.string.quantity_price_format,
                 detail.getQuantity(), detail.getPrice());
         holder.quantity.setText(quantityDetails);
 

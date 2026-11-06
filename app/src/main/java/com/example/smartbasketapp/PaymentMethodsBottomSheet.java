@@ -27,7 +27,7 @@ public class PaymentMethodsBottomSheet extends BottomSheetDialogFragment {
         View addCardButton = view.findViewById(R.id.addCardButton);
         addCardButton.setOnClickListener(v -> {
             // TODO: Логика добавления новой карты
-            Toast.makeText(getContext(), "Добавить карту", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), getString(R.string.add_card), Toast.LENGTH_SHORT).show();
         });
     }
 }

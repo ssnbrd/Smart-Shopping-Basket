@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="sbBackground" format="color" />
+    <attr name="sbSurface" format="color" />
+    <attr name="sbCard" format="color" />
+    <attr name="sbTextPrimary" format="color" />
+    <attr name="sbTextSecondary" format="color" />
+    <attr name="sbIcon" format="color" />
+    <attr name="sbDivider" format="color" />
+    <attr name="sbSearchBar" format="color" />
+    <attr name="sbOverlay" format="color" />
+    <attr name="sbCardStroke" format="color" />
+</resources>

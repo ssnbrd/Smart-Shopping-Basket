@@ -54,7 +54,7 @@ public class TransactionDetailsFragment extends Fragment {
         recyclerView = view.findViewById(R.id.detailsRecyclerView);
         totalAmountTextView = view.findViewById(R.id.totalAmountTextView);
 
-        toolbar.setTitle("Чек №" + transactionId);
+        toolbar.setTitle(getString(R.string.receipt_title_format, transactionId));
         toolbar.setNavigationOnClickListener(v -> getParentFragmentManager().popBackStack());
 
         adapter = new TransactionDetailsAdapter(detailList);
@@ -98,7 +98,7 @@ public class TransactionDetailsFragment extends Fragment {
 
             @Override
             public void onFailure(Call<TransactionDetailsResponse> call, Throwable t) {
-                Toast.makeText(getContext(), "Ошибка сети: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), getString(R.string.error_network_format, t.getMessage()), Toast.LENGTH_SHORT).show();
             }
         });
     }

@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="ok">OK</string>
+    <string name="cancel">Скасаваць</string>
+    <string name="yes">Так</string>
+    <string name="no">Не</string>
+    <string name="create">Стварыць</string>
+    <string name="back">Назад</string>
+    <string name="or">АБО</string>
+    <string name="delete">Выдаліць</string>
+    <string name="rename">Перайменаваць</string>
+    <string name="error_network">Памылка сеткі</string>
+    <string name="error_network_format">Памылка сеткі: %1$s</string>
+    <string name="error_code_format">Памылка. Код: %1$d</string>
+    <string name="error_user_not_authorized">Памылка: карыстальнік не аўтарызаваны</string>
+    <string name="price_format">%1$.2f BYN</string>
+    <string name="quantity_format">%1$d шт.</string>
+    <string name="quantity_price_format">%1$d шт. x %2$.2f BYN</string>
+    <string name="total_label">Разам:</string>
+
+    <string name="home">Галоўная</string>
+    <string name="search">Пошук</string>
+    <string name="cart">Кошык</string>
+    <string name="profile">Профіль</string>
+
+    <string name="search_products_hint">Пошук</string>
+    <string name="search_description">Пошук</string>
+    <string name="recommendations_title">Рэкамендацыі для вас</string>
+    <string name="cart_widget_title">Перайсці да сканавання кошыка</string>
+    <string name="cart_widget_subtitle">Падключыце разумны кошык праз QR-код</string>
+    <string name="cart_widget_subtitle_active">Кошык падключаны — адкрыць пакупкі</string>
+    <string name="cart_widget_image_description">Разумны кошык</string>
+    <string name="scan_cancelled">Сканаванне скасавана</string>
+    <string name="scan_prompt">Навядзіце камеру на QR-код на кошыку</string>
+    <string name="products_load_error">Памылка загрузкі тавараў</string>
+    <string name="products_not_found">Нічога не знойдзена</string>
+
+    <string name="category">Катэгорыі тавараў</string>
+    <string name="category_image_description">Выява катэгорыі</string>
+
+    <string name="product_description_title">Апісанне</string>
+    <string name="product_description_empty">Апісанне пакуль не дададзена.</string>
+    <string name="add_in_lists">Дадаць у спіс пакупак</string>
+    <string name="add_in_favorites">Дадаць у абранае</string>
+    <string name="remove_from_favorites">Прыбраць з абранага</string>
+    <string name="favorite_added">Дададзена ў абранае</string>
+    <string name="favorite_removed">Выдалена з абранага</string>
+    <string name="product_load_error">Не атрымалася адкрыць тавар</string>
+
+    <string name="shopping_lists">Спісы пакупак</string>
+    <string name="add_to_list_title_format">Дадаць «%1$s» у спіс</string>
+    <string name="create_new_list_item">Стварыць новы спіс…</string>
+    <string name="create_new_list">Стварыць новы спіс</string>
+    <string name="rename_list">Перайменаваць спіс</string>
+    <string name="list_name_hint">Назва спіса</string>
+    <string name="add_new_list">Дадаць новы спіс</string>
+    <string name="list_created_format">Спіс «%1$s» створаны</string>
+    <string name="list_create_error">Памылка стварэння спіса</string>
+    <string name="list_create_error_format">Памылка стварэння. Код: %1$d</string>
+    <string name="list_rename_error_format">Памылка перайменавання. Код: %1$d</string>
+    <string name="list_load_error">Не атрымалася загрузіць спісы</string>
+    <string name="list_delete_title">Выдаліць спіс</string>
+    <string name="list_delete_message_format">Вы ўпэўнены, што хочаце выдаліць спіс «%1$s»?</string>
+    <string name="list_deleted">Спіс выдалены</string>
+    <string name="delete_error_format">Памылка выдалення. Код: %1$d</string>
+    <string name="delete_error">Памылка выдалення</string>
+    <string name="update_error">Памылка абнаўлення</string>
+    <string name="product_added_to_list">Тавар дададзены ў спіс</string>
+    <string name="product_add_to_list_error">Не атрымалася дадаць тавар у спіс</string>
+    <string name="list1">Спіс пакупак 1</string>
+
+    <string name="my_card">Мой кошык</string>
+    <string name="all">Разам: </string>
+    <string name="pay">Аплаціць</string>
+    <string name="payment_success">Аплата прайшла паспяхова!</string>
+    <string name="not_connected">Здаецца, вы не падключаны да кошыка…</string>
+    <string name="start_shopping_text">Пачаць пакупкі — адсканіруйце QR-код на кошыку</string>
+    <string name="enter_basket_code">Увядзіце код кошыка</string>
+    <string name="basket_connected">Кошык паспяхова падключаны!</string>
+    <string name="basket_connect_error_format">Памылка падключэння: %1$s</string>
+
+    <string name="profilel">Асабісты кабінет</string>
+    <string name="name_options">Назва опцыі</string>
+    <string name="option_history">Гісторыя пакупак</string>
+    <string name="favorite">Абранае</string>
+    <string name="option_payment">Спосабы аплаты</string>
+    <string name="option_bonus">Бонусны рахунак</string>
+    <string name="option_about">Пра праграму</string>
+    <string name="option_language">Мова</string>
+    <string name="logout_title">Выхад з акаўнта</string>
+    <string name="logout_message">Вы ўпэўнены, што хочаце выйсці?</string>
+    <string name="logout_description">Выйсці</string>
+    <string name="profile_user_id_missing">Памылка: ID карыстальніка не знойдзены</string>
+    <string name="profile_load_error">Памылка загрузкі профілю</string>
+    <string name="payment">Спосабы аплаты</string>
+    <string name="payment_main">Зрабіць асноўнай</string>
+    <string name="payment_card_primary">•• 1234\nАсноўная</string>
+    <string name="add_card">Прывязаць карту</string>
+    <string name="hello_fragment">Версія праграмы\n1.1\n\nРэгіён\nБеларусь\n\nПаступайце ў\nМінскі радыётэхнічны каледж</string>
+    <string name="sale">Акцыя</string>
+    <string name="options">Опцыі</string>
+    <string name="college">Перайсці на сайт</string>
+
+    <string name="language_title">Абярыце мову</string>
+    <string name="language_system">Як у сістэме</string>
+
+    <string name="purchase_history_title">Гісторыя пакупак</string>
+    <string name="purchase_number_format">Пакупка №%1$d</string>
+    <string name="receipt_title_format">Чэк №%1$d</string>
+
+    <string name="bonus_title">На вашым рахунку</string>
+    <string name="bonus_points_label">бонусаў</string>
+    <string name="bonus_level_format">Ваш узровень: %1$s</string>
+    <string name="bonus_level_basic">Базавы</string>
+    <string name="bonus_level_silver">Срэбны</string>
+    <string name="bonus_level_gold">Залаты</string>
+    <string name="bonus_rate_format">Налічэнне: %1$d%% ад сумы кожнай пакупкі</string>
+    <string name="bonus_spent_format">Усяго пакупак на суму: %1$.2f BYN</string>
+    <string name="bonus_next_level_format">Да ўзроўню «%1$s» засталося: %2$.2f BYN</string>
+    <string name="bonus_max_level">Вы дасягнулі максімальнага ўзроўню</string>
+    <string name="bonus_rules_title">Як налічваюцца бонусы</string>
+    <string name="bonus_rules_format">З кожнай пакупкі налічваецца працэнт ад сумы чэка. Працэнт залежыць ад узроўню, які вызначаецца агульнай сумай вашых пакупак:\n\n• Базавы — %1$d%%\n• Срэбны (ад %2$d BYN) — %3$d%%\n• Залаты (ад %4$d BYN) — %5$d%%</string>
+    <string name="bonus_load_error">Не атрымалася загрузіць бонусы</string>
+
+    <string name="email">Email</string>
+    <string name="password">Пароль</string>
+    <string name="name">Імя</string>
+    <string name="surname">Прозвішча</string>
+    <string name="login">Увайсці</string>
+    <string name="login1">Уваход</string>
+    <string name="no_account">Няма акаўнта? Зарэгіструйцеся</string>
+    <string name="registration">Рэгістрацыя</string>
+    <string name="registration_yes">Зарэгістравацца</string>
+    <string name="have_account">Ужо ёсць акаўнт? Увайсці</string>
+    <string name="enter_email_password">Увядзіце email і пароль</string>
+    <string name="login_success">Уваход выкананы паспяхова!</string>
+    <string name="login_error">Памылка ўваходу: няправільны email або пароль</string>
+    <string name="fill_all_fields">Калі ласка, запоўніце ўсе палі</string>
+    <string name="error_empty_field">Поле не можа быць пустым</string>
+    <string name="error_invalid_email">Няправільны фармат email</string>
+    <string name="error_password_short">Пароль павінен змяшчаць не менш за 8 сімвалаў</string>
+    <string name="error_password_complexity">Пароль павінен змяшчаць літары і лічбы</string>
+    <string name="register_success">Рэгістрацыя паспяховая! Цяпер вы можаце ўвайсці.</string>
+    <string name="register_error_format">Памылка рэгістрацыі: %1$s</string>
+
+    <string name="option_theme">Тэма</string>
+    <string name="theme_title">Тэма афармлення</string>
+    <string name="theme_system">Як у сістэме</string>
+    <string name="theme_light">Светлая</string>
+    <string name="theme_dark">Цёмная</string>
+    <string name="start_shopping_go_scan">Пачаць пакупкі — перайсці да сканавання кошыка</string>
+    <string name="widget_scan_cart">Сканаваць кошык</string>
+    <string name="widget_description">Хуткі пераход да сканавання QR-кода разумнага кошыка</string>
+</resources>

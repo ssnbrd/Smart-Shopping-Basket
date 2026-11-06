@@ -89,7 +89,7 @@ public class ListContentFragment extends Fragment implements ListContentAdapter.
         for (ListContentItem item : contentList) {
             total += item.getPrice() * item.getRequiredQuantity();
         }
-        totalPriceTextView.setText(String.format(Locale.getDefault(), "%.2f BYN", total));
+        totalPriceTextView.setText(getString(R.string.price_format, total));
     }
 
     @Override
@@ -105,12 +105,24 @@ public class ListContentFragment extends Fragment implements ListContentAdapter.
                     adapter.notifyItemRemoved(position);
                     calculateTotal();
                 } else {
-                    Toast.makeText(getContext(), "Ошибка удаления", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), getString(R.string.delete_error), Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) { /* ... */ }
+        });
+    }
+
+    @Override
+    public void onProductClick(ListContentItem item) {
+        Product product = new Product(item.getId(), item.getName(), item.getPrice(), item.getImageUrl());
+        List<Product> single = new ArrayList<>();
+        single.add(product);
+        ProductActions.markFavorites(requireContext(), single, () -> {
+            if (isAdded()) {
+                startActivity(ProductDetailActivity.createIntent(requireContext(), product));
+            }
         });
     }
 
@@ -126,14 +138,14 @@ public class ListContentFragment extends Fragment implements ListContentAdapter.
                     loadContent();
                 } else {
                     adapter.notifyDataSetChanged();
-                    Toast.makeText(getContext(), "Ошибка обновления", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), getString(R.string.update_error), Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
                 adapter.notifyDataSetChanged();
-                Toast.makeText(getContext(), "Ошибка сети", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), getString(R.string.error_network), Toast.LENGTH_SHORT).show();
             }
         });
     }

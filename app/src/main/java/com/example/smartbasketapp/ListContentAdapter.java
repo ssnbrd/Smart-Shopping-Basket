@@ -20,7 +20,7 @@ public class ListContentAdapter extends RecyclerView.Adapter<ListContentAdapter.
     public interface OnListContentInteractionListener {
         void onDeleteClick(ListContentItem item, int position);
         void onCheckedChange(ListContentItem item, boolean isChecked);
-        // Сюда можно добавить onFavoriteClick, onQuantityChange и т.д.
+        void onProductClick(ListContentItem item);
     }
 
     private final Context context;
@@ -46,7 +46,7 @@ public class ListContentAdapter extends RecyclerView.Adapter<ListContentAdapter.
 
         holder.productName.setText(item.getName());
         holder.productPrice.setText(String.format(Locale.getDefault(), "%.2f BYN", item.getPrice()));
-        holder.quantityTextView.setText(String.format(Locale.getDefault(), "%d шт.", item.getRequiredQuantity()));
+        holder.quantityTextView.setText(holder.itemView.getContext().getString(R.string.quantity_format, item.getRequiredQuantity()));
 
         Glide.with(context).load(item.getImageUrl()).into(holder.productImage);
 
@@ -61,6 +61,7 @@ public class ListContentAdapter extends RecyclerView.Adapter<ListContentAdapter.
             holder.itemView.setAlpha(1.0f);
         }
 
+        holder.productImage.setOnClickListener(v -> listener.onProductClick(item));
         holder.deleteButton.setOnClickListener(v -> listener.onDeleteClick(item, position));
         holder.checkbox.setOnCheckedChangeListener((buttonView, isChecked) -> {
             listener.onCheckedChange(item, isChecked);

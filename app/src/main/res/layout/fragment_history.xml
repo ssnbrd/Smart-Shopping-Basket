@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_light"
+    android:background="?attr/sbBackground"
     android:clickable="true"
     android:focusable="true"
     tools:context=".HistoryFragment">
@@ -21,9 +21,9 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/surface_white"
+            android:background="?attr/sbSurface"
             app:navigationIcon="@drawable/ic_arrow_back"
-            app:title="История покупок" />
+            app:title="@string/purchase_history_title" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -32,7 +32,7 @@
         android:layout_height="0dp"
         android:padding="8dp"
         android:clipToPadding="false"
-        android:background="@color/bg_light"
+        android:background="?attr/sbBackground"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintTop_toBottomOf="@id/appBarLayout"
         app:layout_constraintBottom_toBottomOf="parent"

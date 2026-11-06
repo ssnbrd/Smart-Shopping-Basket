@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:background="@color/surface_white"
+    android:background="?attr/sbSurface"
     android:padding="16dp">
 
     <RelativeLayout
@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="@string/payment"
-            android:textColor="@android:color/black"
+            android:textColor="?attr/sbTextPrimary"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -29,7 +29,7 @@
             android:layout_centerVertical="true"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@drawable/ic_close"
-            app:tint="@android:color/darker_gray" />
+            app:tint="?attr/sbTextSecondary" />
     </RelativeLayout>
 
 
@@ -50,15 +50,15 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_marginStart="16dp"
-            android:text="•• 1234\nОсновной"
-            android:textColor="@android:color/black" />
+            android:text="@string/payment_card_primary"
+            android:textColor="?attr/sbTextPrimary" />
 
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@drawable/ic_close"
-            app:tint="@android:color/darker_gray" />
+            app:tint="?attr/sbTextSecondary" />
     </LinearLayout>
 
     <LinearLayout
@@ -84,7 +84,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="•• 5678"
-                android:textColor="@android:color/black" />
+                android:textColor="?attr/sbTextPrimary" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -100,7 +100,7 @@
             android:layout_height="wrap_content"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@drawable/ic_close"
-            app:tint="@android:color/darker_gray" />
+            app:tint="?attr/sbTextSecondary" />
     </LinearLayout>
 
     <LinearLayout
@@ -125,7 +125,7 @@
             android:layout_weight="1"
             android:layout_marginStart="16dp"
             android:text="@string/add_card"
-            android:textColor="@android:color/black"
+            android:textColor="?attr/sbTextPrimary"
             android:textSize="16sp" />
 
         <ImageView

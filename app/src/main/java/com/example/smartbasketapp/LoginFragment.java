@@ -63,7 +63,7 @@ public class LoginFragment extends Fragment {
         String password = passwordEditText.getText().toString().trim();
 
         if (email.isEmpty() || password.isEmpty()) {
-            Toast.makeText(getContext(), "Введите email и пароль", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), getString(R.string.enter_email_password), Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -86,7 +86,7 @@ public class LoginFragment extends Fragment {
                     sessionManager.saveUserId(userId);
                     Log.d("AuthCheck", "Фейковый токен сохранен. Проверяем: " + new SessionManager(requireContext()).getAuthToken());
 
-                    Toast.makeText(getContext(), "Вход выполнен успешно!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), getString(R.string.login_success), Toast.LENGTH_SHORT).show();
 
                     if (getActivity() != null) {
                         Intent intent = new Intent(getActivity(), MainActivity.class);
@@ -95,13 +95,13 @@ public class LoginFragment extends Fragment {
                     }
 
                 } else {
-                    Toast.makeText(getContext(), "Ошибка входа: неверный email или пароль", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), getString(R.string.login_error), Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(@NonNull Call<LoginResponse> call, @NonNull Throwable t) {
-                Toast.makeText(getContext(), "Ошибка сети: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), getString(R.string.error_network_format, t.getMessage()), Toast.LENGTH_SHORT).show();
             }
         });
     }

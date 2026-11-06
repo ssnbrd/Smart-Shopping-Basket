@@ -13,7 +13,11 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         SessionManager sessionManager = new SessionManager(getApplicationContext());
         if (sessionManager.getAuthToken() != null && !sessionManager.getAuthToken().isEmpty()) {
-            startActivity(new Intent(this, MainActivity.class));
+            Intent main = new Intent(this, MainActivity.class);
+            if (getIntent().getBooleanExtra(MainActivity.EXTRA_START_SCAN, false)) {
+                main.putExtra(MainActivity.EXTRA_START_SCAN, true);
+            }
+            startActivity(main);
         } else {
             startActivity(new Intent(this, AuthActivity.class));
         }

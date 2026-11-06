@@ -4,13 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@android:color/white">
+    android:background="?attr/sbSurface">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@color/bg_light"
+        android:background="?attr/sbBackground"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -19,13 +19,13 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:title="Моя корзина">
+            app:title="@string/my_card">
 
             <Button
                 android:id="@+id/payButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Оплатить"
+                android:text="@string/pay"
                 android:backgroundTint="@color/link_green"
                 android:textColor="@android:color/white"
                 android:layout_gravity="end"

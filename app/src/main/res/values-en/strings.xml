@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="create">Create</string>
+    <string name="back">Back</string>
+    <string name="or">OR</string>
+    <string name="delete">Delete</string>
+    <string name="rename">Rename</string>
+    <string name="error_network">Network error</string>
+    <string name="error_network_format">Network error: %1$s</string>
+    <string name="error_code_format">Error. Code: %1$d</string>
+    <string name="error_user_not_authorized">Error: you are not signed in</string>
+    <string name="price_format">%1$.2f BYN</string>
+    <string name="quantity_format">%1$d pcs</string>
+    <string name="quantity_price_format">%1$d pcs x %2$.2f BYN</string>
+    <string name="total_label">Total:</string>
+
+    <!-- Bottom navigation -->
+    <string name="home">Home</string>
+    <string name="search">Search</string>
+    <string name="cart">Cart</string>
+    <string name="profile">Profile</string>
+
+    <string name="search_products_hint">Search</string>
+    <string name="search_description">Search</string>
+    <string name="recommendations_title">Recommended for you</string>
+    <string name="cart_widget_title">Go to cart scanning</string>
+    <string name="cart_widget_subtitle">Connect your smart cart with a QR code</string>
+    <string name="cart_widget_subtitle_active">Cart connected — open your shopping</string>
+    <string name="cart_widget_image_description">Smart cart</string>
+    <string name="scan_cancelled">Scanning cancelled</string>
+    <string name="scan_prompt">Point the camera at the QR code on the cart</string>
+    <string name="products_load_error">Couldn\'t load products</string>
+    <string name="products_not_found">Nothing found</string>
+
+    <string name="category">Product categories</string>
+    <string name="category_image_description">Category image</string>
+
+    <string name="product_description_title">Description</string>
+    <string name="product_description_empty">No description yet.</string>
+    <string name="add_in_lists">Add to shopping list</string>
+    <string name="add_in_favorites">Add to favorites</string>
+    <string name="remove_from_favorites">Remove from favorites</string>
+    <string name="favorite_added">Added to favorites</string>
+    <string name="favorite_removed">Removed from favorites</string>
+    <string name="product_load_error">Couldn\'t open the product</string>
+
+    <string name="shopping_lists">Shopping lists</string>
+    <string name="add_to_list_title_format">Add “%1$s” to a list</string>
+    <string name="create_new_list_item">Create a new list…</string>
+    <string name="create_new_list">Create a new list</string>
+    <string name="rename_list">Rename list</string>
+    <string name="list_name_hint">List name</string>
+    <string name="add_new_list">Add a new list</string>
+    <string name="list_created_format">List “%1$s” created</string>
+    <string name="list_create_error">Couldn\'t create the list</string>
+    <string name="list_create_error_format">Couldn\'t create. Code: %1$d</string>
+    <string name="list_rename_error_format">Couldn\'t rename. Code: %1$d</string>
+    <string name="list_load_error">Couldn\'t load lists</string>
+    <string name="list_delete_title">Delete list</string>
+    <string name="list_delete_message_format">Are you sure you want to delete the list “%1$s”?</string>
+    <string name="list_deleted">List deleted</string>
+    <string name="delete_error_format">Couldn\'t delete. Code: %1$d</string>
+    <string name="delete_error">Couldn\'t delete</string>
+    <string name="update_error">Couldn\'t update</string>
+    <string name="product_added_to_list">Product added to the list</string>
+    <string name="product_add_to_list_error">Couldn\'t add the product to the list</string>
+    <string name="list1">Shopping list 1</string>
+
+    <string name="my_card">My cart</string>
+    <string name="all">Total: </string>
+    <string name="pay">Pay</string>
+    <string name="payment_success">Payment successful!</string>
+    <string name="not_connected">Looks like you\'re not connected to a cart…</string>
+    <string name="start_shopping_text">Start shopping — scan the QR code on the cart</string>
+    <string name="enter_basket_code">Enter the cart code</string>
+    <string name="basket_connected">Cart connected successfully!</string>
+    <string name="basket_connect_error_format">Connection error: %1$s</string>
+
+    <string name="profilel">My account</string>
+    <string name="name_options">Option name</string>
+    <string name="option_history">Purchase history</string>
+    <string name="favorite">Favorites</string>
+    <string name="option_payment">Payment methods</string>
+    <string name="option_bonus">Bonus account</string>
+    <string name="option_about">About the app</string>
+    <string name="option_language">Language</string>
+    <string name="logout_title">Sign out</string>
+    <string name="logout_message">Are you sure you want to sign out?</string>
+    <string name="logout_description">Sign out</string>
+    <string name="profile_user_id_missing">Error: user ID not found</string>
+    <string name="profile_load_error">Couldn\'t load the profile</string>
+    <string name="payment">Payment methods</string>
+    <string name="payment_main">Make primary</string>
+    <string name="payment_card_primary">•• 1234\nPrimary</string>
+    <string name="add_card">Link a card</string>
+    <string name="hello_fragment">App version\n1.1\n\nRegion\nBelarus\n\nStudy at\nMinsk Radio Engineering College</string>
+    <string name="sale">Promotion</string>
+    <string name="options">Options</string>
+    <string name="college">Open the website</string>
+
+    <string name="language_title">Choose a language</string>
+    <string name="language_system">System default</string>
+
+    <string name="purchase_history_title">Purchase history</string>
+    <string name="purchase_number_format">Purchase #%1$d</string>
+    <string name="receipt_title_format">Receipt #%1$d</string>
+
+    <string name="bonus_title">Your balance</string>
+    <string name="bonus_points_label">bonus points</string>
+    <string name="bonus_level_format">Your level: %1$s</string>
+    <string name="bonus_level_basic">Basic</string>
+    <string name="bonus_level_silver">Silver</string>
+    <string name="bonus_level_gold">Gold</string>
+    <string name="bonus_rate_format">Earning rate: %1$d%% of every purchase</string>
+    <string name="bonus_spent_format">Total spent: %1$.2f BYN</string>
+    <string name="bonus_next_level_format">To reach “%1$s”: %2$.2f BYN left</string>
+    <string name="bonus_max_level">You\'ve reached the highest level</string>
+    <string name="bonus_rules_title">How bonuses are earned</string>
+    <string name="bonus_rules_format">Every purchase earns a percentage of the receipt total. The percentage depends on your level, which is based on your total spending:\n\n• Basic — %1$d%%\n• Silver (from %2$d BYN) — %3$d%%\n• Gold (from %4$d BYN) — %5$d%%</string>
+    <string name="bonus_load_error">Couldn\'t load bonuses</string>
+
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="name">First name</string>
+    <string name="surname">Last name</string>
+    <string name="login">Sign in</string>
+    <string name="login1">Sign in</string>
+    <string name="no_account">No account? Sign up</string>
+    <string name="registration">Sign up</string>
+    <string name="registration_yes">Create account</string>
+    <string name="have_account">Already have an account? Sign in</string>
+    <string name="enter_email_password">Enter your email and password</string>
+    <string name="login_success">Signed in successfully!</string>
+    <string name="login_error">Sign-in failed: wrong email or password</string>
+    <string name="fill_all_fields">Please fill in all fields</string>
+    <string name="error_empty_field">This field can\'t be empty</string>
+    <string name="error_invalid_email">Invalid email format</string>
+    <string name="error_password_short">Password must be at least 8 characters</string>
+    <string name="error_password_complexity">Password must contain letters and digits</string>
+    <string name="register_success">Registration successful! You can now sign in.</string>
+    <string name="register_error_format">Registration failed: %1$s</string>
+
+    <string name="option_theme">Theme</string>
+    <string name="theme_title">Choose a theme</string>
+    <string name="theme_system">Same as system</string>
+    <string name="theme_light">Light</string>
+    <string name="theme_dark">Dark</string>
+    <string name="start_shopping_go_scan">Start shopping — go to cart scanning</string>
+    <string name="widget_scan_cart">Scan cart</string>
+    <string name="widget_description">Quick access to scanning the smart cart QR code</string>
+</resources>

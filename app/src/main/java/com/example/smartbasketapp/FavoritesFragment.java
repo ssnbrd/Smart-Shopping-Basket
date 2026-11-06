@@ -60,7 +60,7 @@ public class FavoritesFragment extends Fragment implements ProductAdapter.OnProd
         String token = "Bearer " + sessionManager.getAuthToken();
         int userId = sessionManager.getUserId();
         if (userId == -1) {
-            Toast.makeText(getContext(), "Ошибка: пользователь не авторизован", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), getString(R.string.error_user_not_authorized), Toast.LENGTH_SHORT).show();
             return;
         }
         ApiClient.getApiService().getFavorites(userId, token).enqueue(new Callback<FavoritesResponse>() {
@@ -76,15 +76,13 @@ public class FavoritesFragment extends Fragment implements ProductAdapter.OnProd
 
                     productAdapter.notifyDataSetChanged();
                 } else {
-                    String errorMsg = "Ошибка загрузки избранного. Код: " + response.code();
-                    Toast.makeText(getContext(), errorMsg, Toast.LENGTH_SHORT).show();
-                    //Toast.makeText(getContext(), "Ошибка загрузки избранного", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), getString(R.string.error_code_format, response.code()), Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(@NonNull Call<FavoritesResponse> call, @NonNull Throwable t) {
-                Toast.makeText(getContext(), "Ошибка сети: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), getString(R.string.error_network_format, t.getMessage()), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -97,32 +95,31 @@ public class FavoritesFragment extends Fragment implements ProductAdapter.OnProd
 
         RemoveFromFavoritesRequest request = new RemoveFromFavoritesRequest(userId, product.getId());
 
-
         ApiClient.getApiService().removeFromFavorites(token, request).enqueue(new Callback<Void>() {
             @Override
             public void onResponse(@NonNull Call<Void> call, @NonNull Response<Void> response) {
                 if (response.isSuccessful()) {
                     favoriteProductList.remove(position);
                     productAdapter.notifyItemRemoved(position);
-                    Toast.makeText(getContext(), "Удалено из избранного", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), getString(R.string.favorite_removed), Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(getContext(), "Ошибка удаления. Код: " + response.code(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), getString(R.string.delete_error_format, response.code()), Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(@NonNull Call<Void> call, @NonNull Throwable t) {
-                Toast.makeText(getContext(), "Ошибка сети: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), getString(R.string.error_network_format, t.getMessage()), Toast.LENGTH_SHORT).show();
             }
         });
     }
     @Override
     public void onAddToListClick(Product product) {
-        Toast.makeText(getContext(), "Добавить в список: " + product.getName(), Toast.LENGTH_SHORT).show();
+        ProductActions.showAddToList(requireContext(), product);
     }
     @Override
     public void onProductClick(Product product) {
-        // TODO: Переход на детальный экран продукта
-        Toast.makeText(getContext(), "Нажали на: " + product.getName(), Toast.LENGTH_SHORT).show();
+        product.setFavorite(true);
+        startActivity(ProductDetailActivity.createIntent(requireContext(), product));
     }
 }

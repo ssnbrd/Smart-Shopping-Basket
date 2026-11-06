@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 
 import java.util.List;
-import java.util.Locale;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
     public interface OnProductInteractionListener {
@@ -23,7 +22,6 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     }
     private final Context context;
     private final List<Product> productList;
-    //private final OnProductClickListener listener;
     private final OnProductInteractionListener listener;
     public ProductAdapter(Context context, List<Product> productList, OnProductInteractionListener  listener) {
         this.context = context;
@@ -43,29 +41,22 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         Product product = productList.get(position);
 
         holder.productName.setText(product.getName());
-        holder.productPrice.setText(String.format(Locale.getDefault(), "%.2f BYN", product.getPrice()));
+        holder.productPrice.setText(context.getString(R.string.price_format, product.getPrice()));
 
         Glide.with(context)
                 .load(product.getImageUrl())
                 .placeholder(R.drawable.ic_launcher_background)
                 .into(holder.productImage);
 
-//        holder.addToFavoritesButton.setOnClickListener(v -> {
-//            if (listener != null) {
-//                listener.onFavoriteClick(product.getId());
-//            }
-//        });
         if (product.isFavorite()) {
             holder.addToFavoritesButton.setImageResource(R.drawable.ic_favorite);
         } else {
             holder.addToFavoritesButton.setImageResource(R.drawable.ic_favorite_border);
         }
-//        holder.addToShoppingListButton.setOnClickListener(v -> {
-//            if (listener != null) {
-//                listener.onShoppingListClick(product.getId());
-//            }
-//        });
-        holder.addToFavoritesButton.setOnClickListener(v -> listener.onFavoriteClick(product, position));
+        holder.addToFavoritesButton.setOnClickListener(v -> {
+            int pos = holder.getBindingAdapterPosition();
+            if (pos != RecyclerView.NO_POSITION) listener.onFavoriteClick(product, pos);
+        });
         holder.addToShoppingListButton.setOnClickListener(v -> listener.onAddToListClick(product));
         holder.itemView.setOnClickListener(v -> listener.onProductClick(product));
     }
@@ -73,6 +64,16 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     @Override
     public int getItemCount() {
         return productList.size();
+    }
+
+    public void setFavoriteById(int productId, boolean favorite) {
+        for (int i = 0; i < productList.size(); i++) {
+            Product p = productList.get(i);
+            if (p.getId() == productId && p.isFavorite() != favorite) {
+                p.setFavorite(favorite);
+                notifyItemChanged(i);
+            }
+        }
     }
     public static class ProductViewHolder extends RecyclerView.ViewHolder {
         ImageView productImage;

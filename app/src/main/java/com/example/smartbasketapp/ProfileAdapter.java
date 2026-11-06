@@ -9,12 +9,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
+import com.google.android.material.color.MaterialColors;
 import java.util.List;
 
 public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ProfileViewHolder> {
 
     public interface OnOptionClickListener {
-        void onOptionClick(String optionTitle);
+        void onOptionClick(int optionId);
     }
 
     private final List<ProfileOption> options;
@@ -38,18 +39,18 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ProfileV
     public void onBindViewHolder(@NonNull ProfileViewHolder holder, int position) {
         ProfileOption option = options.get(position);
 
-        holder.title.setText(option.getTitle());
+        holder.title.setText(option.getTitleRes());
 
         if (option.isHighlighted()) {
             holder.title.setTextColor(ContextCompat.getColor(context, R.color.link_green));
             holder.arrow.setColorFilter(ContextCompat.getColor(context, R.color.link_green));
         } else {
-            holder.title.setTextColor(ContextCompat.getColor(context, android.R.color.black));
-            holder.arrow.setColorFilter(ContextCompat.getColor(context, android.R.color.black));
+            holder.title.setTextColor(MaterialColors.getColor(holder.itemView, R.attr.sbTextPrimary));
+            holder.arrow.setColorFilter(MaterialColors.getColor(holder.itemView, R.attr.sbIcon));
         }
 
         holder.itemView.setOnClickListener(v -> {
-            listener.onOptionClick(option.getTitle());
+            listener.onOptionClick(option.getId());
         });
     }
 

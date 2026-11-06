@@ -1,13 +1,51 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <style name="Base.Theme.SmartBasketApp" parent="Theme.Material3.Light.NoActionBar">
+    <style name="Theme.SmartBasketApp.Light" parent="Theme.Material3.Light.NoActionBar">
         <item name="colorPrimary">@color/link_green</item>
         <item name="colorOnPrimary">@color/surface_white</item>
-
+        <item name="android:colorBackground">@color/surface_white</item>
+        <item name="android:windowBackground">@color/surface_white</item>
+        <item name="colorSurface">@color/surface_white</item>
+        <item name="colorOnSurface">@color/text_primary</item>
+        <item name="colorOnBackground">@color/text_primary</item>
+        <item name="android:textColorPrimary">@color/text_primary</item>
+        <item name="android:textColorSecondary">@color/text_secondary</item>
+        <item name="sbBackground">@color/bg_light</item>
+        <item name="sbSurface">@color/surface_white</item>
+        <item name="sbCard">@color/card_bg</item>
+        <item name="sbTextPrimary">@color/text_primary</item>
+        <item name="sbTextSecondary">@color/text_secondary</item>
+        <item name="sbIcon">@color/icon_inactive</item>
+        <item name="sbDivider">@color/divider</item>
+        <item name="sbSearchBar">@color/search_bar_bg</item>
+        <item name="sbOverlay">@color/overlay_surface</item>
+        <item name="sbCardStroke">@color/card_stroke</item>
     </style>
 
-    <style name="ShapeAppearance.App.CircleImageView" parent="">
-        <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">50%</item>
+    <style name="Theme.SmartBasketApp.Dark" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="colorPrimary">@color/link_green</item>
+        <item name="colorOnPrimary">@color/night_surface</item>
+        <item name="android:colorBackground">@color/night_surface</item>
+        <item name="android:windowBackground">@color/night_surface</item>
+        <item name="colorSurface">@color/night_surface</item>
+        <item name="colorSurfaceContainer">@color/night_card</item>
+        <item name="colorSurfaceContainerHigh">@color/night_card</item>
+        <item name="colorSurfaceContainerHighest">@color/night_card</item>
+        <item name="colorOnSurface">@color/night_text_primary</item>
+        <item name="colorOnSurfaceVariant">@color/night_text_secondary</item>
+        <item name="colorOnBackground">@color/night_text_primary</item>
+        <item name="android:textColorPrimary">@color/night_text_primary</item>
+        <item name="android:textColorSecondary">@color/night_text_secondary</item>
+        <item name="sbBackground">@color/night_bg_light</item>
+        <item name="sbSurface">@color/night_surface</item>
+        <item name="sbCard">@color/night_card</item>
+        <item name="sbTextPrimary">@color/night_text_primary</item>
+        <item name="sbTextSecondary">@color/night_text_secondary</item>
+        <item name="sbIcon">@color/night_icon</item>
+        <item name="sbDivider">@color/night_divider</item>
+        <item name="sbSearchBar">@color/night_search_bar</item>
+        <item name="sbOverlay">@color/night_overlay</item>
+        <item name="sbCardStroke">@color/night_card_stroke</item>
     </style>
-    <style name="Theme.SmartBasketApp" parent="Base.Theme.SmartBasketApp" />
+
+    <style name="Theme.SmartBasketApp" parent="Theme.SmartBasketApp.Light" />
 </resources>

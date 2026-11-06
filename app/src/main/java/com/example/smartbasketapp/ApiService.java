@@ -14,6 +14,8 @@ import retrofit2.http.PUT;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
+import okhttp3.ResponseBody;
+
 public interface ApiService {
 
     @POST("/api/register")
@@ -22,6 +24,10 @@ public interface ApiService {
     Call<LoginResponse> loginUser(@Body LoginRequest loginRequest);
     @GET("/api/products/search")
     Call<ProductSearchResponse> searchProducts(@Query("q") String query);
+//    @GET("/api/product/{id}")
+//    Call<ProductDetailResponse> getProductDetails(@Path("id") int productId);
+    @GET("/api/product/{id}")
+    Call<ResponseBody> getProductDetails(@Path("id") int productId);
     @GET("/api/user/{user_id}")
     Call<UserProfileResponse> getUserProfile(@Path("user_id") int userId);
     @GET("/api/categories")

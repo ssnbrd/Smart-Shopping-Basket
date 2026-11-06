@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import retrofit2.Call;
@@ -35,26 +36,21 @@ public class ProfileActivity extends AppCompatActivity implements ProfileAdapter
         profileContentContainer = findViewById(R.id.profile_content_container);
         RecyclerView recyclerView = findViewById(R.id.profileOptionsRecyclerView);
         ImageButton logoutButton = findViewById(R.id.logoutButton);
-        logoutButton.setOnClickListener(v -> {
-            new AlertDialog.Builder(this)
-                    .setTitle("Выход из аккаунта")
-                    .setMessage("Вы уверены, что хотите выйти?")
-                    .setPositiveButton("Да", (dialog, which) -> logoutUser())
-                    .setNegativeButton("Нет", null)
-                    .show();
-        });
+        logoutButton.setOnClickListener(v -> confirmLogout());
         userNameTextView = findViewById(R.id.userName);
         userEmailTextView = findViewById(R.id.userEmail);
         sessionManager = new SessionManager(this);
 
         List<ProfileOption> profileOptions = new ArrayList<>();
 
-            profileOptions.add(new ProfileOption("История покупок", false));
-            profileOptions.add(new ProfileOption("Избранное", false));
-            profileOptions.add(new ProfileOption("Список покупок", false));
-            profileOptions.add(new ProfileOption("Способы оплаты", false));
-            profileOptions.add(new ProfileOption("Бонусный счёт", true));
-            profileOptions.add(new ProfileOption("О приложении", false));
+        profileOptions.add(new ProfileOption(ProfileOption.HISTORY, R.string.option_history, false));
+        profileOptions.add(new ProfileOption(ProfileOption.FAVORITES, R.string.favorite, false));
+        profileOptions.add(new ProfileOption(ProfileOption.SHOPPING_LISTS, R.string.shopping_lists, false));
+        profileOptions.add(new ProfileOption(ProfileOption.PAYMENT, R.string.option_payment, false));
+        profileOptions.add(new ProfileOption(ProfileOption.BONUS, R.string.option_bonus, true));
+        profileOptions.add(new ProfileOption(ProfileOption.LANGUAGE, R.string.option_language, false));
+        profileOptions.add(new ProfileOption(ProfileOption.THEME, R.string.option_theme, false));
+        profileOptions.add(new ProfileOption(ProfileOption.ABOUT, R.string.option_about, false));
 
         ProfileAdapter adapter = new ProfileAdapter(this, profileOptions, this);
         recyclerView.setAdapter(adapter);
@@ -104,35 +100,42 @@ public class ProfileActivity extends AppCompatActivity implements ProfileAdapter
         loadUserProfile();
     }
     @Override
-    public void onOptionClick(String optionTitle) {
-        Fragment fragment = null;
-        if ("Способы оплаты".equals(optionTitle)) {
-            PaymentMethodsBottomSheet bottomSheet = new PaymentMethodsBottomSheet();
-            bottomSheet.show(getSupportFragmentManager(), "PaymentMethodsBottomSheet");
-        }
-        else if ("Бонусный счёт".equals(optionTitle)) {
-            calculateAndShowBonuses();
-            return;
-        }
-        else {
-        switch (optionTitle) {
-            case "История покупок":
-                fragment = new HistoryFragment();
+    public void onOptionClick(int optionId) {
+        switch (optionId) {
+            case ProfileOption.PAYMENT:
+                new PaymentMethodsBottomSheet().show(getSupportFragmentManager(), "PaymentMethodsBottomSheet");
                 break;
-            case "Избранное":
-                fragment = new FavoritesFragment();
+            case ProfileOption.BONUS:
+                calculateAndShowBonuses();
                 break;
-            case "Список покупок":
-                fragment = new ShoppingListsFragment();
+            case ProfileOption.LANGUAGE:
+                LanguageManager.showLanguageDialog(this);
                 break;
-            case "О приложении":
-                fragment = new AboutAppFragment();
+            case ProfileOption.THEME:
+                ThemeManager.showThemeDialog(this);
+                break;
+            case ProfileOption.HISTORY:
+                openFragment(new HistoryFragment());
+                break;
+            case ProfileOption.FAVORITES:
+                openFragment(new FavoritesFragment());
+                break;
+            case ProfileOption.SHOPPING_LISTS:
+                openFragment(new ShoppingListsFragment());
+                break;
+            case ProfileOption.ABOUT:
+                openFragment(new AboutAppFragment());
                 break;
         }
-}
-        if (fragment != null) {
-            openFragment(fragment);
-        }
+    }
+
+    private void confirmLogout() {
+        new AlertDialog.Builder(this)
+                .setTitle(R.string.logout_title)
+                .setMessage(R.string.logout_message)
+                .setPositiveButton(R.string.yes, (dialog, which) -> logoutUser())
+                .setNegativeButton(R.string.no, null)
+                .show();
     }
 
     private void openFragment(Fragment fragment) {
@@ -156,7 +159,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileAdapter
         SessionManager sessionManager = new SessionManager(this);
         int userId = sessionManager.getUserId();
         if (userId == -1) {
-            Toast.makeText(this, "Ошибка: ID пользователя не найден", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.profile_user_id_missing, Toast.LENGTH_SHORT).show();
             return;
         }
         ApiClient.getApiService().getUserProfile(userId).enqueue(new Callback<UserProfileResponse>()
@@ -174,12 +177,12 @@ public class ProfileActivity extends AppCompatActivity implements ProfileAdapter
                     userEmailTextView.setText(email);
                 }
                 else {
-                    Toast.makeText(ProfileActivity.this, "Ошибка загрузки профиля", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ProfileActivity.this, R.string.profile_load_error, Toast.LENGTH_SHORT).show();
                 }
             }
             @Override
             public void onFailure(Call<UserProfileResponse> call, Throwable t) {
-                Toast.makeText(ProfileActivity.this, "Ошибка сети: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(ProfileActivity.this, getString(R.string.error_network_format, t.getMessage()), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -191,25 +194,30 @@ public class ProfileActivity extends AppCompatActivity implements ProfileAdapter
         ApiClient.getApiService().getTransactionHistory(userId, token).enqueue(new Callback<TransactionResponse>() {
             @Override
             public void onResponse(Call<TransactionResponse> call, Response<TransactionResponse> response) {
-                double bonuses = 0.0;
-                if (response.isSuccessful() && response.body() != null) {
-                    List<Transaction> transactions = response.body().getTransactions();
-                    if (transactions != null) {
-                        bonuses = transactions.size() * 0.1;
-                    }
+                if (!response.isSuccessful() || response.body() == null) {
+                    Toast.makeText(ProfileActivity.this, R.string.bonus_load_error, Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                List<Transaction> transactions = response.body().getTransactions();
+                if (transactions == null) transactions = new ArrayList<>();
+
+                List<Transaction> sorted = new ArrayList<>(transactions);
+                Collections.sort(sorted, (a, b) -> Integer.compare(a.getId(), b.getId()));
+                List<Double> totals = new ArrayList<>();
+                for (Transaction t : sorted) {
+                    totals.add(t.getTotalAmount());
                 }
 
                 BonusAccountFragment bonusFragment = new BonusAccountFragment();
                 Bundle args = new Bundle();
-                args.putDouble("USER_BONUSES", bonuses);
+                args.putSerializable(BonusAccountFragment.ARG_RESULT, BonusCalculator.calculate(totals));
                 bonusFragment.setArguments(args);
-
                 openFragment(bonusFragment);
             }
 
             @Override
             public void onFailure(Call<TransactionResponse> call, Throwable t) {
-                Toast.makeText(ProfileActivity.this, "Не удалось загрузить бонусы", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ProfileActivity.this, R.string.bonus_load_error, Toast.LENGTH_SHORT).show();
             }
         });
     }

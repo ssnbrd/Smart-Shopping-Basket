@@ -65,7 +65,7 @@ public class RegisterFragment extends Fragment {
                 String password = passwordEditText.getText().toString().trim();
 
                 if (name.isEmpty() || surname.isEmpty() || email.isEmpty() || password.isEmpty()) {
-                    Toast.makeText(getContext(), "Пожалуйста, заполните все поля", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), getString(R.string.fill_all_fields), Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -78,19 +78,19 @@ public class RegisterFragment extends Fragment {
                 String email = emailEditText.getText().toString().trim();
 
                 if (email.isEmpty()) {
-                    emailInputLayout.setError("Поле не может быть пустым");
+                    emailInputLayout.setError(getString(R.string.error_empty_field));
                     return false;
                 } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-                    emailInputLayout.setError("Некорректный формат email");
+                    emailInputLayout.setError(getString(R.string.error_invalid_email));
                     return false;
                 }
 
                 String password = passwordEditText.getText().toString().trim();
                 if (password.length() < 8) {
-                    passwordInputLayout.setError("Пароль должен быть не менее 8 символов");
+                    passwordInputLayout.setError(getString(R.string.error_password_short));
                     return false;
                 } else if (!password.matches(".*\\d.*") || !password.matches(".*[a-zA-Z].*")) {
-                    passwordInputLayout.setError("Пароль должен содержать буквы и цифры");
+                    passwordInputLayout.setError(getString(R.string.error_password_complexity));
                     return false;
                 }
 
@@ -130,16 +130,16 @@ public class RegisterFragment extends Fragment {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful()) {
-                    Toast.makeText(getContext(), "Регистрация успешна! Теперь вы можете войти.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), getString(R.string.register_success), Toast.LENGTH_LONG).show();
 
                     getParentFragmentManager().popBackStack();
                 } else {
-                    Toast.makeText(getContext(), "Ошибка регистрации: " + response.message(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), getString(R.string.register_error_format, response.message()), Toast.LENGTH_SHORT).show();
                 }
             }
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-                Toast.makeText(getContext(), "Ошибка сети: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), getString(R.string.error_network_format, t.getMessage()), Toast.LENGTH_SHORT).show();
             }
         });
     }

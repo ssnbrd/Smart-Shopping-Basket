@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_light"
+    android:background="?attr/sbBackground"
     android:clickable="true"
     android:focusable="true"
     tools:context=".ListContentFragment">
@@ -13,7 +13,7 @@
         android:id="@+id/appBarLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@color/surface_white"
+        android:background="?attr/sbSurface"
         app:elevation="4dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,7 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:navigationIcon="@drawable/ic_arrow_back"
-            app:titleTextColor="@android:color/black"
+            app:titleTextColor="?attr/sbTextPrimary"
             tools:title="Название списка покупок" />
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -50,7 +50,7 @@
         android:orientation="horizontal"
         android:padding="16dp"
         android:gravity="center_vertical"
-        android:background="@color/surface_white"
+        android:background="?attr/sbSurface"
         android:elevation="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -59,10 +59,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Итого:"
+            android:text="@string/total_label"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:textColor="@android:color/black"/>
+            android:textColor="?attr/sbTextPrimary"/>
 
         <TextView
             android:id="@+id/totalPriceTextView"
@@ -70,7 +70,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="end"
-            android:text="0.00 ₽"
+            android:text="0.00 BYN"
             android:textSize="20sp"
             android:textStyle="bold"
             android:textColor="@color/link_green" />

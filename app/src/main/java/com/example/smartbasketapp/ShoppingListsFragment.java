@@ -104,9 +104,9 @@ public class ShoppingListsFragment extends Fragment implements ShoppingListAdapt
         ShoppingList listToDelete = shoppingLists.get(position);
 
         new AlertDialog.Builder(requireContext())
-                .setTitle("Удалить список")
-                .setMessage("Вы уверены, что хотите удалить список '" + listToDelete.getName() + "'?")
-                .setPositiveButton("Да", (dialog, which) -> {
+                .setTitle(getString(R.string.list_delete_title))
+                .setMessage(getString(R.string.list_delete_message_format, listToDelete.getName()))
+                .setPositiveButton(R.string.yes, (dialog, which) -> {
                     ApiClient.getApiService().deleteShoppingList(token, listToDelete.getId(), new DeleteListRequest(userId))
                             .enqueue(new Callback<Void>() {
                                 @Override
@@ -114,18 +114,18 @@ public class ShoppingListsFragment extends Fragment implements ShoppingListAdapt
                                     if (response.isSuccessful()) {
                                         shoppingLists.remove(position);
                                         adapter.notifyItemRemoved(position);
-                                        Toast.makeText(getContext(), "Список удален", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getContext(), getString(R.string.list_deleted), Toast.LENGTH_SHORT).show();
                                     } else {
-                                        Toast.makeText(getContext(), "Ошибка удаления. Код: " + response.code(), Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getContext(), getString(R.string.delete_error_format, response.code()), Toast.LENGTH_SHORT).show();
                                     }
                                 }
                                 @Override
                                 public void onFailure(Call<Void> call, Throwable t) {
-                                    Toast.makeText(getContext(), "Ошибка сети: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getContext(), getString(R.string.error_network_format, t.getMessage()), Toast.LENGTH_SHORT).show();
                                 }
                             });
                 })
-                .setNegativeButton("Нет", null)
+                .setNegativeButton(R.string.no, null)
                 .show();
     }
 
@@ -148,18 +148,18 @@ public class ShoppingListsFragment extends Fragment implements ShoppingListAdapt
     private void showAddOrRenameDialog(ShoppingList existingList, int position) {
         AlertDialog.Builder builder = new AlertDialog.Builder(requireActivity());
         final EditText input = new EditText(requireActivity());
-        input.setHint("Название списка");
+        input.setHint(R.string.list_name_hint);
 
         if (existingList != null) {
-            builder.setTitle("Переименовать список");
+            builder.setTitle(R.string.rename_list);
             input.setText(existingList.getName());
         } else {
-            builder.setTitle("Создать новый список");
+            builder.setTitle(R.string.create_new_list);
         }
 
         builder.setView(input);
 
-        builder.setPositiveButton("OK", (dialog, which) -> {
+        builder.setPositiveButton(R.string.ok, (dialog, which) -> {
             String listName = input.getText().toString().trim();
             if (!listName.isEmpty()) {
                 if (existingList != null) {
@@ -169,7 +169,7 @@ public class ShoppingListsFragment extends Fragment implements ShoppingListAdapt
                 }
             }
         });
-        builder.setNegativeButton("Отмена", (dialog, which) -> dialog.cancel());
+        builder.setNegativeButton(R.string.cancel, (dialog, which) -> dialog.cancel());
         builder.show();
     }
     private void createListOnServer(String name) {
@@ -183,15 +183,15 @@ public class ShoppingListsFragment extends Fragment implements ShoppingListAdapt
             @Override
             public void onResponse(Call<ShoppingList> call, Response<ShoppingList> response) {
                 if (response.isSuccessful()) {
-                    Toast.makeText(getContext(), "Список '" + name + "' создан", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), getString(R.string.list_created_format, name), Toast.LENGTH_SHORT).show();
                     loadShoppingLists();
                 } else {
-                    Toast.makeText(getContext(), "Ошибка создания. Код: " + response.code(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), getString(R.string.list_create_error_format, response.code()), Toast.LENGTH_SHORT).show();
                 }
             }
             @Override
             public void onFailure(Call<ShoppingList> call, Throwable t) {
-                Toast.makeText(getContext(), "Ошибка сети: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), getString(R.string.error_network_format, t.getMessage()), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -210,12 +210,12 @@ public class ShoppingListsFragment extends Fragment implements ShoppingListAdapt
                     list.setName(newName);
                     adapter.notifyItemChanged(position);
                 } else {
-                    Toast.makeText(getContext(), "Ошибка переименования. Код: " + response.code(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), getString(R.string.list_rename_error_format, response.code()), Toast.LENGTH_SHORT).show();
                 }
             }
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-                Toast.makeText(getContext(), "Ошибка сети: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), getString(R.string.error_network_format, t.getMessage()), Toast.LENGTH_SHORT).show();
             }
         });
     }

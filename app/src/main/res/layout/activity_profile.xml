@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F5F5"
+    android:background="?attr/sbBackground"
     tools:context=".ProfileActivity">
 
     <FrameLayout
@@ -29,7 +29,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:text="@string/profilel"
-            android:textColor="@android:color/darker_gray"
+            android:textColor="?attr/sbTextSecondary"
             android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -39,6 +39,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_margin="16dp"
+            app:cardBackgroundColor="?attr/sbCard"
             app:cardCornerRadius="20dp"
             app:cardElevation="4dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -50,62 +51,47 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-
-                <com.google.android.material.imageview.ShapeableImageView
-                    android:id="@+id/userAvatar"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:background="@color/link_green"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:shapeAppearanceOverlay="@style/ShapeAppearance.App.CircleImageView" />
                 <TextView
                     android:id="@+id/userName"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:text="Фамилия Имя"
-                    android:textColor="@android:color/black"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginEnd="20dp"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:textColor="?attr/sbTextPrimary"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="@id/userAvatar"
-                    app:layout_constraintStart_toEndOf="@id/userAvatar"
-                    app:layout_constraintTop_toTopOf="@id/userAvatar"
-                    app:layout_constraintEnd_toStartOf="@id/userMenuButton"/>
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Фамилия Имя" />
 
                 <TextView
                     android:id="@+id/userEmail"
-                    android:layout_width="277dp"
-                    android:layout_height="20dp"
-                    android:layout_marginStart="16dp"
-                    android:text="email@example.com"
-                    android:textColor="@android:color/darker_gray"
-                    android:textSize="14sp"
-                    app:layout_constraintEnd_toStartOf="@id/userMenuButton"
-                    app:layout_constraintStart_toStartOf="@id/userName"
-                    app:layout_constraintTop_toBottomOf="@id/userName" />
-
-                <ImageButton
-                    android:id="@+id/userMenuButton"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:src="@drawable/ic_more_vert"
-                    app:layout_constraintBottom_toBottomOf="@id/userAvatar"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="20dp"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:textColor="?attr/sbTextSecondary"
+                    android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/userAvatar" />
+                    app:layout_constraintStart_toStartOf="@id/userName"
+                    app:layout_constraintTop_toBottomOf="@id/userName"
+                    tools:text="email@example.com" />
+
                 <View
                     android:id="@+id/divider"
                     android:layout_width="0dp"
                     android:layout_height="1dp"
                     android:layout_marginTop="16dp"
-                    android:background="@color/text_secondary"
-                    app:layout_constraintTop_toBottomOf="@id/userAvatar"
+                    android:background="?attr/sbDivider"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+                    app:layout_constraintTop_toBottomOf="@id/userEmail" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/profileOptionsRecyclerView"
@@ -124,6 +110,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
                     android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="@string/logout_description"
                     android:src="@drawable/ic_logout"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" />
@@ -138,12 +125,12 @@
         android:id="@+id/bottomNavigation"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@color/bg_light"
+        android:background="?attr/sbBackground"
         app:itemActiveIndicatorStyle="@null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:itemIconTint="@color/icon_inactive"
+        app:itemIconTint="?attr/sbIcon"
         app:itemTextColor="@color/link_green"
         app:menu="@menu/bottom_nav_menu" />
 

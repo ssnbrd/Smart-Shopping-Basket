@@ -123,7 +123,7 @@ public class ActiveCartFragment extends Fragment implements CartAdapter.OnCartIn
             @Override
             public void onResponse(Call<FinishSessionResponse> call, Response<FinishSessionResponse> response) {
                 if (response.isSuccessful()) {
-                    Toast.makeText(getContext(), "Оплата прошла успешно!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), getString(R.string.payment_success), Toast.LENGTH_LONG).show();
                     sessionManager.clearSession();
 
                     Intent intent = new Intent(getActivity(), MainActivity.class);
@@ -133,7 +133,7 @@ public class ActiveCartFragment extends Fragment implements CartAdapter.OnCartIn
             }
             @Override
             public void onFailure(Call<FinishSessionResponse> call, Throwable t) {
-                Toast.makeText(getContext(), "Ошибка сети: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), getString(R.string.error_network_format, t.getMessage()), Toast.LENGTH_SHORT).show();
             }
         });
     }

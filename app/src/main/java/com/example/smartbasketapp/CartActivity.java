@@ -36,7 +36,7 @@ public class CartActivity extends AppCompatActivity {
                 if (result.getContents() != null) {
                     connectToBasket(result.getContents());
                 } else {
-                    Toast.makeText(this, "Сканирование отменено", Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, getString(R.string.scan_cancelled), Toast.LENGTH_LONG).show();
                 }
             });
     @Override
@@ -68,7 +68,7 @@ public class CartActivity extends AppCompatActivity {
                 hideKeyboard();
                 connectToBasket(qrCode);
             } else {
-                Toast.makeText(this, "Введите код корзины", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.enter_basket_code), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -105,7 +105,7 @@ public class CartActivity extends AppCompatActivity {
         ScanOptions options = new ScanOptions();
         options.setOrientationLocked(true);
         options.setDesiredBarcodeFormats(ScanOptions.QR_CODE);
-        options.setPrompt("Наведите камеру на QR-код");
+        options.setPrompt(getString(R.string.scan_prompt));
         options.setCameraId(0);
         options.setBeepEnabled(true);
         options.setBarcodeImageEnabled(true);
@@ -117,7 +117,7 @@ public class CartActivity extends AppCompatActivity {
         int userId = sessionManager.getUserId();
 
         if (userId == -1) {
-            Toast.makeText(this, "Ошибка: пользователь не авторизован", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.error_user_not_authorized), Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -130,17 +130,17 @@ public class CartActivity extends AppCompatActivity {
                     int sessionId = response.body().getSessionId();
                     sessionManager.saveSessionId(sessionId);
 
-                    Toast.makeText(CartActivity.this, "Корзина успешно подключена!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CartActivity.this, getString(R.string.basket_connected), Toast.LENGTH_SHORT).show();
 
                     openActiveCartFragment();
                 } else {
-                    Toast.makeText(CartActivity.this, "Ошибка подключения: " + response.message(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(CartActivity.this, getString(R.string.basket_connect_error_format, response.message()), Toast.LENGTH_LONG).show();
                 }
             }
 
             @Override
             public void onFailure(Call<ConnectBasketResponse> call, Throwable t) {
-                Toast.makeText(CartActivity.this, "Ошибка сети: " + t.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(CartActivity.this, getString(R.string.error_network_format, t.getMessage()), Toast.LENGTH_LONG).show();
             }
         });
     }

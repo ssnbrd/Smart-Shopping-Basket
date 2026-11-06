@@ -44,7 +44,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Transaction transaction = transactionList.get(position);
 
-        holder.transactionId.setText("Покупка №" + transaction.getId());
+        holder.transactionId.setText(holder.itemView.getContext().getString(R.string.purchase_number_format, transaction.getId()));
         holder.transactionAmount.setText(String.format(Locale.getDefault(), "%.2f BYN", transaction.getTotalAmount()));
 
         holder.transactionDate.setText(transaction.getDateTime());

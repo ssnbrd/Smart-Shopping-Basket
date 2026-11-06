@@ -15,7 +15,7 @@
         android:layout_weight="1"
         android:text="@string/name_options"
         android:textSize="16sp"
-        android:textColor="@android:color/black"/>
+        android:textColor="?attr/sbTextPrimary"/>
 
     <ImageView
         android:id="@+id/optionArrow"

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white"
+    android:background="?attr/sbSurface"
     android:clickable="true"
     android:focusable="true"
     tools:context=".BonusAccountFragment">
@@ -13,56 +13,137 @@
         android:id="@+id/appBarLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/bg_light"
+            android:background="?attr/sbBackground"
             app:navigationIcon="@drawable/ic_arrow_back"
-            app:title="Бонусный счёт" />
+            app:title="@string/option_bonus" />
     </com.google.android.material.appbar.AppBarLayout>
 
-    <TextView
-        android:id="@+id/bonusTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="На вашем счету"
-        android:textSize="20sp"
-        android:textColor="@color/text_secondary"
-        app:layout_constraintVertical_chainStyle="packed"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/bonusAmountTextView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <TextView
-        android:id="@+id/bonusAmountTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:textSize="56sp"
-        android:textStyle="bold"
-        android:textColor="@color/link_green"
-        app:layout_constraintTop_toBottomOf="@id/bonusTitle"
-        app:layout_constraintBottom_toTopOf="@id/bonusLabel"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:text="123.5" />
-
-    <TextView
-        android:id="@+id/bonusLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="бонусов"
-        android:textSize="20sp"
-        android:textColor="@color/text_secondary"
-        app:layout_constraintTop_toBottomOf="@id/bonusAmountTextView"
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/appBarLayout">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/bonus_title"
+                android:textColor="?attr/sbTextSecondary"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/bonusAmountTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/accent_green_dark"
+                android:textSize="56sp"
+                android:textStyle="bold"
+                tools:text="123.50" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/bonus_points_label"
+                android:textColor="?attr/sbTextSecondary"
+                android:textSize="20sp" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                app:cardBackgroundColor="?attr/sbBackground"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:id="@+id/bonusLevelTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="?attr/sbTextPrimary"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        tools:text="Ваш уровень: Серебряный" />
+
+                    <TextView
+                        android:id="@+id/bonusRateTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:textColor="?attr/sbTextSecondary"
+                        android:textSize="15sp"
+                        tools:text="Начисление: 2% от суммы каждой покупки" />
+
+                    <ProgressBar
+                        android:id="@+id/bonusProgress"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="8dp"
+                        android:layout_marginTop="16dp"
+                        android:max="100"
+                        android:progressTint="@color/accent_green_dark"
+                        tools:progress="40" />
+
+                    <TextView
+                        android:id="@+id/bonusNextLevelTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:textColor="?attr/sbTextSecondary"
+                        android:textSize="14sp"
+                        tools:text="До уровня «Золотой» осталось: 120.00 BYN" />
+
+                    <TextView
+                        android:id="@+id/bonusSpentTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:textColor="?attr/sbTextSecondary"
+                        android:textSize="14sp"
+                        tools:text="Всего покупок на сумму: 380.00 BYN" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/bonus_rules_title"
+                android:textColor="?attr/sbTextPrimary"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/bonusRulesTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:lineSpacingExtra="3dp"
+                android:textColor="?attr/sbTextSecondary"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

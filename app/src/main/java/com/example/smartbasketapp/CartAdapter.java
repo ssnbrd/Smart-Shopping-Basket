@@ -39,7 +39,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
 
         holder.productName.setText(product.getName());
         holder.productPrice.setText(String.format(Locale.getDefault(), "%.2f BYN", product.getPrice()));
-        holder.quantityTextView.setText(String.format(Locale.getDefault(), "%d шт.", product.getScannedQuantity()));
+        holder.quantityTextView.setText(holder.itemView.getContext().getString(R.string.quantity_format, product.getScannedQuantity()));
 
         Glide.with(context).load(product.getImageUrl()).into(holder.productImage);
 
